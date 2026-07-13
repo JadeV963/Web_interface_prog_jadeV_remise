@@ -27,3 +27,14 @@ async function loadLineup(){
 }
 
 loadBtn.addEventListener("click", loadLineup);
+
+clearBtn.addEventListener("click", () => {
+  lineupContainer.innerHTML = "";
+  detailsPanel.innerHTML = "<p>Sélectionne un artiste pour voir les détails</p>";
+  statusEl.textContent = "Lineup cleared.";
+});
+
+lineupContainer.addEventListener("artist-selected", (event) => {
+  const id = event.detail.id;
+  detailsPanel.innerHTML = `<p>Détails de l'artiste sélectionné (id: ${id})</p>`;
+});

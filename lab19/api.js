@@ -1,11 +1,10 @@
 export async function fetchArtists(){
- const repsonse = await fetch("artists.json");
+  const response = await fetch("artists.json");
 
- if(!repsonse.ok){
+  if(!response.ok){
     throw new Error("Failed to fetch artists");
- }
+  }
 
- const data = await repsonse.json();
- return data;
-
+  const data = await response.json();
+  return data;
 }
