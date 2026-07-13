@@ -20,9 +20,9 @@ class ArtistCard extends HTMLElement {
         clone.querySelector(".country").textContent = this.getAttribute("country");
 
         const detailsBtn = clone.querySelector(".details-btn");
-        detailsBtn.addEventLstener("click", () =>{
+        detailsBtn.addEventListener("click", () =>{
             this.dispatchEvent(
-                new CustomEvent("artist-seleted", {
+                new CustomEvent("artist-selected", {
                    detail: { id: this.getAttribute("data-id") },
                    bubbles:true,
                    composed:true, 
@@ -30,7 +30,7 @@ class ArtistCard extends HTMLElement {
             );
         });
 
-        
+
         this.shadowRoot.appendChild(clone);
     }
 }
