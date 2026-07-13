@@ -10,6 +10,7 @@ export function renderArtists(artists, container) {
         card.setAttribute("stage", artist.stage);
         card.setAttribute("time",artist.time);
         card.setAttribute("country", artist.country);
+        card.setAttribute("headliner", artist.headliner);
 
         container.appendChild(card);
         });

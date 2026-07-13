@@ -19,6 +19,9 @@ class ArtistCard extends HTMLElement {
         clone.querySelector(".time").textContent = this.getAttribute("time");
         clone.querySelector(".country").textContent = this.getAttribute("country");
 
+        if (this.getAttribute("headliner") === "true"){
+            clone.querySelector(".card").classList.add("headliner");
+        }
         const detailsBtn = clone.querySelector(".details-btn");
         detailsBtn.addEventListener("click", () =>{
             this.dispatchEvent(
