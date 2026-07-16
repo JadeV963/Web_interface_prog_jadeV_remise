@@ -32,7 +32,7 @@ async function loadLineup() {
   loadButton.disabled = true;
 
   try {
-    const data = getFestivalData();
+    const data = await getFestivalData();
 
     const artists = data.artists.map(
       (item) => new Artist(item.id, item.name, item.country, item.genre),
@@ -76,7 +76,7 @@ async function loadLineup() {
   } catch (error) {
     console.log("Lineup loaded:", error);
 
-    renderErrors(error.message);
+    renderError(error.message);
   }
 
   loadButton.disabled = true;
