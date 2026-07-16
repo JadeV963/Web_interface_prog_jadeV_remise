@@ -1,4 +1,4 @@
-export class PerformanceCard {
+export class PerformanceCard extends HTMLElement {
     constructor() {
         super();
 
@@ -107,6 +107,6 @@ export class PerformanceCard {
 }
 
 customElements.define(
-    "performance",
-    PerformanceCard()
+    "performance-card",
+    PerformanceCard
 );
