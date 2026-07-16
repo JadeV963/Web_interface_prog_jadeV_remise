@@ -27,7 +27,7 @@ const resetButton = document.getElementById("reset-filters");
 let performances;
 
 async function loadLineup() {
-  renderLoading;
+  renderLoading();
 
   loadButton.disabled = true;
 
@@ -39,7 +39,7 @@ async function loadLineup() {
     );
 
     performances = data.performances.map((item) => {
-      const artist = artists.filter((artist) => artist.id === item.artistId);
+      const artist = artists.find((artist) => artist.id === item.artistId);
 
       if (item.featured) {
         return new FeaturedPerformance(
@@ -54,7 +54,7 @@ async function loadLineup() {
         );
       }
 
-      return new Performances(
+      return new Performance (
         item.id,
         item.title,
         artist,
@@ -64,8 +64,9 @@ async function loadLineup() {
         item.ticketsRemaining,
       );
     });
-
-    renderPerformance(performances);
+    performances.sort((a, b) => a.time.localeCompare(b.time));
+    
+    renderPerformances(performances);
 
     searchInput.disabled = false;
     stageFilter.disabled = false;
