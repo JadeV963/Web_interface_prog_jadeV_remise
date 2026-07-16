@@ -1,17 +1,17 @@
 import { Performance } from "./Performance.js";
 
-const performanceContainer = document.getElementById("performances");
+const performanceContainer = document.getElementById("performance-list");
 
 const statusOutput = document.getElementById("status");
 
 const performanceCount = document.getElementById("performance-count");
 
-const ticketCount = document.getElementById("available-tickets");
+const ticketCount = document.getElementById("ticket-count");
 
 const averagePrice = document.getElementById("average-price");
 
 export function renderLoading() {
-  statusOutput.textContent = "Festival lineup loaded successfully.";
+  statusOutput.textContent = "Loading festival data ...";
 
   performanceContainer.innerHTML = "";
 
@@ -24,31 +24,38 @@ export function renderError(error) {
   statusOutput.textContent = `Error: ${error}`;
 
   performanceCount.textContent = "0";
+  ticketCount.textContent = "0";
+  averagePrice.textContent = "$0.00";
+  performanceContainer.innerHTML = "";
 }
 
 export function renderPerformances(performance) {
   performanceContainer.innerHTML = "";
 
-  if (!performance) {
+  if (!performance || performance.length === 0) {
     statusOutput.textContent =
       "No performances match " + "the current filters.";
+
+      performanceCount.textContent = "0";
+      ticketCount.textContent = "0";
+      averagePrice.textContent = "$0.00";
 
     return;
   }
 
   performance.forEach((item) => {
-    const card = document.createElement("performance");
+    const card = document.createElement("performance-card");
 
-    card.data = item;
+    card.performance = item;
 
     performanceContainer.appendChild(card);
   });
 
   statusOutput.textContent = "Festival lineup loaded successfully.";
 
-  performanceCount.textContent = performances.length;
+  performanceCount.textContent = performance.length;
 
   ticketCount.textContent = Performance.totalAvailableTickets(performance);
 
-  averagePrice.textContent = Performance.averagePrice;
+  averagePrice.textContent = Performance.averagePrice(performance);
 }
