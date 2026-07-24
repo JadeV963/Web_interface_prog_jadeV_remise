@@ -13,7 +13,7 @@
 <body class="p-4">
     <h1 class="mb-4">Current Weather</h1>
     <div class="mb-5">
-        <h2 class="h5">using your Location</h2>
+        <h2 class="h5">Using your Location</h2>
         <current-weather></current-weather>
     </div>
 
@@ -24,21 +24,37 @@
     <template id="current-weather-template">
         <style>
         .card {
-            border: 1px solid #ddd;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            max-width: 280px;
-            background: #fff;
+            border: none;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            max-width: 300px;
+            background: linear-gradient(135deg, #4a90e2 0%, #7ec8e3 100%);
+            box-shadow: 0 0.5rem 1.5rem rgba(74, 144, 226, 0.35);
+            color: #fff;
         }
         .temperature {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0.25rem 0;
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+            color: #ffd93d;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
         .status {
-            color: #666;
-            font-size: 0.9rem;
+            color: #fff;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            opacity: 0.9;
         }
+
+        .wind{
+            color: #fff;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+
         </style>
         <div class="card">
             <p class="status">Loading weather ...</p>
