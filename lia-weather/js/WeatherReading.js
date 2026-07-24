@@ -1,3 +1,8 @@
+/**
+ * Represents a single current-weather reading returned by the
+ * Open-Meteo API, with formatting helpers for display.
+ */
+
 export class WeatherReading{
     constructor(temperature, windspeed, weathercode, time) {
         this.temperature = temperature;

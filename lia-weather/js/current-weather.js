@@ -3,7 +3,11 @@ import { WeatherReading } from "./WeatherReading.js";
 
 const DEFAULT_LATITUDE = 45.5088;
 const DEFAULT_LONGITUDE = -73.5878;
-
+/**
+ * <curent-weather> custom element.
+ * -coordinates provided via the `latitude`/`longitude` attributes, or
+ * -the user's browser location ( via Geolocalisation), used by default.
+ */
 export class CurrentWeather extends HTMLElement {
     constructor() {
         super();
@@ -17,7 +21,10 @@ export class CurrentWeather extends HTMLElement {
         this._temperatureEl = this.shadowRoot.querySelector(".temperature");
         this._windEl = this.shadowRoot.querySelector(".wind");
     }
-
+// Runs once the element is inserted into the DOM. Attribute-based
+//coordinates take priority over geolocalisation, so developers can
+//override the default behavious simply by setting HTML attributes
+    
     connectedCallback(){
         if (this.hasAttribute("latitude") && this.hasAttribute("longitude")){
             this._loadWeather(
